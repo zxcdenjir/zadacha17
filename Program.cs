@@ -12,6 +12,12 @@
                 Console.WriteLine("Неверный ввод данных");
         } while (!isCorrect || n <= 0);
 
+        if (n == 1)
+        {
+            PrintMatrix(new int[,] { { 1 } });
+            return;
+        }
+
         int[,] matrix = new int[n, n];
 
         int num = 1;
@@ -25,10 +31,9 @@
         matrix[i, j] = 2;
         num++;
 
-
         while (num <= (n * n) - 1)
         {
-            while (i != 0 && j != n - 1)      
+            while (i != 0 && j != n - 1)
             {
                 i--;
                 j++;
@@ -36,20 +41,20 @@
                 num++;
             }
 
-            if (j + 1 < n)      
+            if (j + 1 < n)
             {
-                j++;               
+                j++;
             }
-            else                
+            else
             {
-                i++;            
+                i++;
             }
 
             matrix[i, j] = num;
             if (num >= n * n) break;
             num++;
 
-            while (i != n - 1 && j != 0)   
+            while (i != n - 1 && j != 0)
             {
                 i++;
                 j--;
@@ -57,13 +62,13 @@
                 num++;
             }
 
-            if (i + 1 < n)      
+            if (i + 1 < n)
             {
-                i++;            
+                i++;
             }
-            else                
+            else
             {
-                j++;            
+                j++;
             }
 
             matrix[i, j] = num;
@@ -71,6 +76,7 @@
         }
         PrintMatrix(matrix);
     }
+
     static void PrintMatrix(int[,] array)
     {
         int column_count = array.GetLength(1);
@@ -90,7 +96,7 @@
         {
             for (int j = 0; j < column_count; j++)
             {
-                if (j == 0) 
+                if (j == 0)
                     Console.Write("│");
                 Console.Write(" {0," + (column_widths[j]) + " } ", array[i, j]);
             }
